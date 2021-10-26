@@ -1,8 +1,8 @@
 FROM openjdk:17-alpine
 
 # Create appuser to run as non-root for security purposes and /app for app-specific files
-RUN groupadd -g 999 appuser \
-    && useradd -r -u 999 -g appuser appuser \
+RUN addgroup appuser \
+    && adduser -S appuser -G appuser \
     && mkdir /app \
     && chown appuser:appuser /app
 USER appuser
